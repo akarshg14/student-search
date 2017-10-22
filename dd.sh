@@ -37,7 +37,7 @@ cat data/$1/$2/temp.ttxt | tail -1 | sed 's/M/ \nM/' >> data/$1/$2/$2.txt
          rm -rf data/$1/$2
     fi 
 
-}
+
  
 export -f extract
 
@@ -46,7 +46,17 @@ rm -rf data
 
 mkdir data
 
+#y17
 
+rm -rf data/y17'
+
+mkdir data/y17
+
+echo 'Downloading data of y17 students.....'
+
+seq 170001 170850 | xargs -n 1 -P 50 -I{} bash -c 'extract y17 {}'
+
+echo 'Data of y13 students has been successfully downloaded.'
 
 #y16
 
@@ -84,38 +94,3 @@ seq 14001 14832 | xargs -n 1 -P 50 -I{} bash -c 'extract y14 {}'
 
 echo 'Data of y14 students has been successfully downloaded.'
 
-#y13
-
-rm -rf data/y13
-
-mkdir data/y13
-
-echo 'Downloading data of y13 students.....'
-
-seq 13001 13819 | xargs -n 1 -P 50 -I{} bash -c 'extract y13 {}'
-
-echo 'Data of y13 students has been successfully downloaded.'
-
-#y16 PG
-
-rm -rf data/y16p
-
-mkdir data/y16p
-
-echo 'Downloading data of y16 PG students.....'
-
-seq 16101001 16126040 | xargs -n 1 -P 50 -I{} bash -c 'extract y16p {}'  
-
-echo 'Data of y16 students has been successfully downloaded.'
-
-#y15 PG
-
-rm -rf data/y15p
-
-mkdir data/y15p
-
-echo 'Downloading data of y15 PG students.....'
-
-seq 15101001 15214263 | xargs -n 1 -P 50 -I{} bash -c 'extract y15p {}'  
-
-echo 'Data of y15 PG students has been successfully downloaded.'
